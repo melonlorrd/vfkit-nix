@@ -325,7 +325,7 @@ def up(name):
     print(f" {ip}")
 
     say("waiting for cloud-init...")
-    st = subprocess.run(ssh_cmd(name, "cloud-init status --wait >/dev/null 2>&1; cloud-init status"),
+    st = subprocess.run(ssh_cmd(name, "sudo cloud-init status --wait >/dev/null 2>&1; sudo cloud-init status"),
                         stdin=DEVNULL, stdout=PIPE, stderr=DEVNULL, text=True).stdout.strip()
     say(f"cloud-init {st}")
     if "done" not in st:
